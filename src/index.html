@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <title>d3 starter</title>
+  <link rel='stylesheet' href='styles.css'>
+  <script src='js/libs/p5.min.js'></script>
+  <script src='js/libs/p5dom.min.js'></script>
+</head>
+<body>
+  <h1>data viz exercise</h1>
+
+  <!-- dropzone -->
+  <p id='dz' class='lighter'>
+    drop data file here 
+    - must be text (eg csv) and less than 10kB
+  </p>
+
+  <!-- cat table -->
+  <table id='exTable'></table>
+ 
+  <script src='js/get_file.js'></script>
+  <script src='js/process_file.js'></script>
+</body>
+</html>

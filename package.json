@@ -1,0 +1,50 @@
+{
+  "name": "d3-starter-kit",
+  "version": "1.0.0",
+  "description": "let's get going",
+  "main": "app.js",
+  "author": "angelo",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "eslint": "^4.3.0",
+    "eslint-config-p5js": "^1.0.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-stylus": "^2.6.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es6": true,
+      "amd": true,
+      "node": true,
+      "jasmine": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "p5js",
+      "p5js/dom"
+    ],
+    
+    "globals": {
+      "d3": true
+    },
+    "rules": {
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "semi": [
+        "warn",
+        "never"
+      ],
+      "no-console": [
+        "warn"
+      ]
+    }
+  }
+}
