@@ -3,13 +3,16 @@
 function preload() {   // eslint-disable-line
   select('#exTable')
     .hide()
+  
+  select('#chooseViz')
+    .hide()
 }
 
 
 function setup() {    // eslint-disable-line
   // setup dropzone  
   select('#dz')
-    .position(20,60)
+    .position(20,80)
     .drop(gotFile)
     .dragOver(highlight)
     .dragLeave(unhighlight)

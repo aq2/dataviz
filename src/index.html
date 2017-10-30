@@ -11,14 +11,32 @@
   <h1>data viz exercise</h1>
 
   <!-- dropzone -->
-  <p id='dz' class='lighter'>
+  <div id='dz' class='lighter'>
     drop data file here 
     - must be text (eg csv) and less than 10kB
-  </p>
+  </div>
 
   <!-- cat table -->
-  <table id='exTable'></table>
+  <div id='exTableDiv'>
+    <table id='exTable'></table>
+  </div>
  
+  <div id='chooseViz'>
+    Select data vizualisation
+    <br>
+     <!-- <select>
+      <option value="pareto">pareto</option>
+      <option value="parallel">parallel</option>
+    </select>  -->
+    pareto     <input type='radio' name='vizType' value='pareto' id='pareto'>
+    parallel   <input type='radio' name='vizType' value='parallel' id='parallel'>
+
+    </table>
+  </div>
+
+
+
+
   <script src='js/get_file.js'></script>
   <script src='js/process_file.js'></script>
 </body>

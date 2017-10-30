@@ -4,6 +4,7 @@ let rawData,
     alphaField = -1,
     catData = {cats: [], rankables: [], maxis: [], idCat: -1, iDn: ''}
  
+
 function processFile(data) {               // eslint-disable-line
   rawData = data
 
@@ -32,8 +33,6 @@ function makeExampleTableHtml(data) {
       myHtml,               // string of html
       candidates = [],      // array containing two example candidates
       categories = [],      // array of category names
-      // exampleData = [],     // array of first three rows
-      // alphaField = -1
 
   // get first three rows
   exampleData = data.split('\n', 3)
@@ -85,7 +84,6 @@ function makeExampleTableHtml(data) {
 
 // rankables click handler
 function getRankables() {
-  
   let i = 0,
       catLength = catData.cats.length
   
@@ -104,11 +102,11 @@ function getRankables() {
 
   select('#measRow').class('dark')
 
-  getMinMax()
+  getMaxis()
 }
 
 
-function getMinMax() {
+function getMaxis() {
   let i = 0,
       length = catData.cats.length,
       html = '<td>high value is better</td>'
@@ -116,9 +114,7 @@ function getMinMax() {
   // for each measurable, add checkbox
   for (i; i<length; i++) {
     html += "<td>"
-    // console.log(i, 'rankables', catData.rankables, catData.rankables.indexOf(i))
     if (catData.rankables.indexOf(i) != -1) {
-      // catData.maxis.push(i)
       html += "<input type='checkbox' id='max" + i + "'>"
     } 
     html += "</td>"
@@ -139,12 +135,9 @@ function getMinMax() {
 
 
 function getID() {
-  
   let i = 0,
       length = catData.cats.length,
-      mlength = catData.maxis.length,
       html = "<td>select one id field</td>"
-
 
   select('#minmaxRow')
     .class('dark')
@@ -167,7 +160,7 @@ function getID() {
   select('#idRow')
     .html(html)
 
-  // check alphafield radio button
+  // check alphafield radio button - choose alpha by default
   document.getElementsByName("iD")[alphaField].checked = true
   
   select('#outputCell')
@@ -180,26 +173,6 @@ function getID() {
 
 
 function makeData() {
-  let the1 = document.querySelector('input[name="iD"]:checked').value
-  
-  catData.idCat = the1
-  catData.iDn = catData.cats[the1]
-
-  // console.log('catData', catData)
-  // console.log('rawData', rawData)
-
-  // now make data table
-  // rawData is still one big string
-  // time to do something with it!
-
-  // parse rawData
-  parseRawData()
-}
-
-
-
-
-function parseRawData() {
   let i = 1,
       j = 0,
       numb,
@@ -209,7 +182,13 @@ function parseRawData() {
       candidate = {},
       candidates = [],
       someData = rawData.split('\n'),
-      len = someData.length
+      len = someData.length,
+      the1 = document.querySelector('input[name="iD"]:checked').value
+  
+  catData.idCat = the1
+  catData.iDn = catData.cats[the1]
+
+  // now make data table - rawData is still one big string
 
   // todo fugly hacky loops going on in here
   // for each rawCandidate, change into formatted candidate
@@ -220,40 +199,39 @@ function parseRawData() {
     
     for (prop of rawCand) {
       propname = catData.cats[j]
-      
-      // if it's alpha, trim it, else just use the numeric val      
-      if (isNaN(numb=Number(prop))) {
-        prop = prop.trim()        
-      }  else {
-        prop = numb
-      }
+     
+      // if prop value is alpha, trim it, else just use the numeric val      
+      prop = (isNaN(numb=Number(prop))) ? prop.trim() : numb
 
       // fugling hacky
-      if (j == catData.cats.length - 1) {
-        j = -1
-      }
-      
+      j = (j == catData.cats.length - 1) ? -1 : j      
       j++
+      // j = (j == catData.cats.length - 1) ? 0 : j++  // why no work
+
       candidate[propname] = prop
     }
     candidates.push(candidate)
   }
   console.table(candidates)
 
-  // @@ now what? -> pareto!
+  // @@ now what?
 
+  // rollup table
+  select('#exTable')
+  .hide()
 
-}
+  select('#exTableDiv')
+    .position(150, 80)
+    .size(100, 50)
+    .class('darker')
+    .html('2 - Criteria')
+    .show()
 
-// categories object, rather than array
-// now cat=["rank", "catZ"], rankables=[2,5], minman=[2], the1=3(nss)
-// now categories is []
-// category = {name: 'rank', meas: true, max: false, id: false}
-// OR catData = {categories: [], rankables: [], minmax: [], id: 7}
-// what'll be more useful?
-// used by: buildData() -> dominator,
+  // choose viz
+  select('#chooseViz')
+    .position(280, 80)
+    .show()
 
+// mock all this out
 
-function logg(variable) {
-  console.log("'" + variable + "' = " + variable)
 }
