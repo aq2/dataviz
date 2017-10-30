@@ -214,7 +214,6 @@ function makeData() {
   }
   console.table(candidates)
 
-  // @@ now what?
 
   // rollup table
   select('#exTable')
@@ -225,13 +224,56 @@ function makeData() {
     .size(100, 50)
     .class('darker')
     .html('2 - Criteria')
-    .show()
+    // .show()
 
-  // choose viz
-  select('#chooseViz')
+  getViz()
+}
+
+
+function getViz() {
+  let vt,
+      vizRadio = createRadio(),
+      vizDiv = select('#chooseViz'),
+      vizTypes = ['pareto', 'parallel'],
+      vizBtn = createButton('ok')
+                 // .parent(vizDiv)
+                 .mousePressed(vizzed)
+
+  // for each vizType
+  for (vt of vizTypes) {
+    vizRadio.option(vt)
+  }
+
+  // to place button to left of radio
+  vizBtn.parent(vizDiv)
+  vizRadio.parent(vizDiv)
+  
+  vizDiv
     .position(280, 80)
     .show()
 
-// mock all this out
 
+  function vizzed() {
+    let vizType = vizRadio.value()
+    // todo - yuck! - vizType() - could use evil eval, but...
+
+    switch (vizType) {
+      case 'pareto':
+        pareto()
+        break
+      case 'parallel':
+        parallel()
+        break
+      default: {}
+    }
+  }
+
+}
+
+function pareto() {
+  console.log('pareto')
+}
+
+function parallel() {
+  console.log('parallel')  
 }

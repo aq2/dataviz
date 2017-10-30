@@ -1,0 +1,32 @@
+#exTable
+	color $darkest - 40%
+	border-collapse collapse
+	border-spacing 0
+
+
+	td, th    
+		// border 0 none 
+		border 1px solid $mainColour - 10%
+		padding 4px 8px
+		height 30px 
+
+	
+	th 
+		background $darker
+		color $lightest
+		font-weight bold
+		height 40px
+
+
+	td  
+		// background: #FAFAFA; 
+		text-align center
+
+
+	/* last-child blank cells! */
+	tr td:last-child, tr th:last-child
+		background none 
+		text-align center
+		// padding-left 10px
+		border 0 none 
+		

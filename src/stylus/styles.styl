@@ -1,43 +1,11 @@
-$blue = #4682b4
-$darkblue = #4a46b4
-$pink = #b44669
-$brown = #b45d46
-$green = #9AB446
-$gray = #112
-
-$maincolour = $blue
-
-$dark = $maincolour - 20%
-$darker = $maincolour - 40%
-$darkest = $maincolour - 60%
-$light = $maincolour + 20%
-$lighter = $maincolour + 40%
-$lightest = $maincolour + 60%
-
-.green 
-	color $green
-
-.light
-	background $light
-
-.lighter
-	background $lighter
-
-.lightest
-	background $lightest
-
-.dark 
-	background $dark
-
-.darker
-	background $darker
-
-.darkest
-	background $darkest
-
+// import everything
+// @import '*'
+@import 'vars'
+@import 'exampleTable'
+@import 'input_controls'
 
 body
-	background $maincolour
+	background $mainColour
 	color $gray
 	font-family Helvetica, Arial, sans-serif
 	
@@ -47,107 +15,13 @@ div, p
 	margin 8px
 
 
-
-
-
-// #rankHelp, #rankRow
-//   // -webkit-animation-name: greenPulse;
-//   // -webkit-animation-duration: 2s;
-//   // -webkit-animation-iteration-count: infinite;
-//   background $pink
-
-
-.hidden 
-	display none
-
 #dz
 	padding 8px
-	border-style dashed
 	height 100px
 	width 75%
 	// font-size 36pt
 	// background-color $lighter
 
-table  
-	color $darkest - 40%
-	border-collapse collapse
-	border-spacing 0
-
-
-td, th    
-	// border 0 none 
-	border 1px solid $steelblue - 10%
-	padding 4px 8px
-	height 30px 
-
-
-th 
-	background $darker
-	color $lightest
-	font-weight bold
-	height 40px
-
-
-td  
-	// background: #FAFAFA; 
-	text-align center
-
-
-/* Zebra Stripe Rows */
-// tr:nth-child(even) td { background: #EEE; } 
-// tr:nth-child(odd) td { background: #FDFDFD; }
-
-/* last-child blank cells! */
-tr td:last-child, tr th:last-child
-	background none 
-	text-align center
-	// padding-left 10px
-	border 0 none 
-	
-
-
-// #measRow
-// 	background-color $lighter
-
-input[type="checkbox"], input[type="radio"]
-	cursor pointer
-	-webkit-appearance none
-	appearance none
-	background grey
-	border-radius 2px
-	box-sizing border-box
-	position relative
-	box-sizing content-box 
-	width 16px
-	height 16px
-	border-width 0
-	transition all .2s linear
-
-
-input[type="radio"]
-	border-radius 20px
-
-
-input[type="checkbox"]:checked, input[type="radio"]:checked
-	background-color $darkest
-
-
-input[type="checkbox"]:focus, input[type="radio"]:focus
-	outline 0 none
-	box-shadow none
-
-
-input[type="checkbox"]:hover, input[type="radio"]:hover
-	outline 0 none
-	box-shadow none
-	background-color $darker
-
-
-
-
-
-
-// @-webkit-keyframes greenPulse 
-//   from { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }
-//   50% { background-color: #91bd09; -webkit-box-shadow: 0 0 18px #91bd09; }
-//   to { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }
+.rolledUp 
+	border 8px solid $pink
+	background yellow
