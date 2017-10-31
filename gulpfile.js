@@ -26,23 +26,32 @@ function customPlumber(errTitle) {
 
 // -------- my tasks of goodness ------------
 
-// process stylus files
+// new stylus task
 gulp.task('stylus', () => {
-  return ( 
-    gulp.src(srcDir + '/stylus/**/*.styl')
-        .pipe(customPlumber('Stylus Error'))
-        .pipe(stylus({ compress: true }))
-        .pipe(gulp.dest(srcDir))
-        .pipe(browserSync.stream())
-  )
+  gulp.src(srcDir + '/stylus/main.styl')
+      .pipe(customPlumber('Stylus Error'))  
+      .pipe(stylus())
+      .pipe(gulp.dest(srcDir))
+      .pipe(browserSync.reload({ stream:true }))
+
 })
+
+gulp.task('watch:stylus', () => {
+  gulp.watch(srcDir + '/stylus/**/*.styl', ['stylus'])
+})
+
+
+gulp.task('watch:js', () => {
+  gulp.watch(srcDir + '/js/**/*.js', ['js'])
+})
+
 
 // simply watch my hand-written js
 gulp.task('js', () => {
-  return ( 
+   
     gulp.src(srcDir +'/js/**/*.js')
         .pipe(browserSync.reload({ stream: true }))
-  )
+  
 })
 
 
@@ -70,8 +79,8 @@ gulp.task('build', () => {
 
 // everyday dev-mode task - watch css,js,html in /src, process to /build
 gulp.task('dev', () => {
-  gulp.start(['build', 'browser-sync'])  
-  gulp.watch([srcDir + '/stylus/**/*.styl'], ['stylus'])
-  gulp.watch([srcDir + '/js/**/*.js'], ['js'])
+  gulp.start(['build', 'browser-sync', 'watch:stylus', 'watch:js'])
+  // gulp.watch([srcDir + '/stylus2/main.styl'], ['stylus2'])
+  // gulp.watch([srcDir + '/js/**/*.js'], ['js'])
   gulp.watch([srcDir + '/**/*.html'], ['html'])
 })

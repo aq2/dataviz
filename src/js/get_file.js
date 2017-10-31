@@ -1,5 +1,8 @@
 // start point for the app
 
+var dzQ
+
+
 function preload() {   // eslint-disable-line
   select('#exTableDiv')
     .hide()
@@ -25,15 +28,27 @@ function setup() {    // eslint-disable-line
   //   .dragLeave(unhighlight)
 
 
-    let bQ = new Qdiv('barQ', 10, 10, 200, 100, 'foo')
 
-    let bD = select('#barQ')
-              .html('<p>bazbaz</p>')
-    // rollup('#barQ', 10, 10, 100, 100, 'rolledup')
+  dzQ = new Qdiv('dz', 10, 10, 400, 200, dzHtml)
 
-    bQ.roller(10, 205, 'tits')
-    let fh = bQ.finalHTML
-    console.log('fh ' + fh)
+  select('#dz')
+  .drop(gotFile)
+     .position(20,80)
+     .addClass('border')
+     .addClass('lighter')
+     .dragOver(highlight)
+     .dragLeave(unhighlight)
+
+
+    // let bQ = new Qdiv('barQ', 10, 10, 200, 100, 'foo')
+
+    // let bD = select('#barQ')
+    //           .html('<p>bazbaz</p>')
+    // // rollup('#barQ', 10, 10, 100, 100, 'rolledup')
+
+    // bQ.roller(10, 205, 'tits')
+    // let fh = bQ.finalHTML
+    // console.log('fh ' + fh)
     
 
     // let bq = select('#barQ')
@@ -71,16 +86,9 @@ function gotFile(file) {
     dz.html(errMsg)
     // wobble?
   } else {
-    // good to go
+    // good to go ho
 
-    // // qq- new stuff!
-    // need a method here for divs or see boook!
-    // dz.rollup(newX, newY, newW, newH, newHTML)
-
-    // old-skool stylee
-    // rollup(dz, newX, newY, etc)
-    rollup('#dz', 10, 10, 100, 100, 'foo')
-
+    dzQ.roller(80, 40, '1 - drop')
     
 
     // original G
@@ -88,10 +96,8 @@ function gotFile(file) {
     //   .size(80,30)
     //   .class('rolledUp')
     
-    // var dz2 = select('#dz')
-
-    console.log('orig is ' + dz.origHTML)
-    // console.log(dz2.html())
+    console.log('orig is ' + dzQ.oHTML)
+    console.log('final was ' + dzQ.fHTML)
 
 
     // todo disable or change dz event handler
@@ -125,7 +131,7 @@ function gotFile(file) {
 //   return this
 // }
 
-
+// constructor
 var Qdiv = function (name, ox, oy, ow, oh, oHTML) {
   this.name = name
   this.ox = ox
@@ -134,8 +140,6 @@ var Qdiv = function (name, ox, oy, ow, oh, oHTML) {
   this.oh = oh
   this.oHTML = oHTML
   this.fHTML = ''
-
-  //define roller here without prototype?
 
   createDiv(oHTML)
       .id(name)

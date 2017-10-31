@@ -1,0 +1,105 @@
+input[type="checkbox"],
+input[type="radio"] {
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #808080;
+  border-radius: 2px;
+  box-sizing: border-box;
+  position: relative;
+  box-sizing: content-box;
+  width: 16px;
+  height: 16px;
+  border-width: 0;
+  transition: all 0.2s linear;
+}
+input[type="radio"] {
+  border-radius: 20px;
+}
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+  background-color: #1c3448;
+}
+input[type="checkbox"]:focus,
+input[type="radio"]:focus {
+  outline: 0 none;
+  box-shadow: none;
+}
+input[type="checkbox"]:hover,
+input[type="radio"]:hover {
+  outline: 0 none;
+  box-shadow: none;
+  background-color: #2a4e6c;
+}
+#exTable {
+  color: #111f2b;
+  border-collapse: collapse;
+  border-spacing: 0;
+/* last-child blank cells! */
+}
+#exTable td,
+#exTable th {
+  padding: 4px 8px;
+  height: 30px;
+}
+#exTable th {
+  background: #2a4e6c;
+  color: #b4cde2;
+  font-weight: bold;
+  height: 40px;
+}
+#exTable td {
+  text-align: center;
+}
+#exTable tr td:last-child,
+#exTable tr th:last-child {
+  background: none;
+  text-align: center;
+  border: 0 none;
+}
+.green {
+  color: #9ab446;
+}
+.light {
+  background: #699bc5;
+}
+.lighter {
+  background: #8fb4d3;
+}
+.lightest {
+  background: #b4cde2;
+}
+.dark {
+  background: #386890;
+}
+.darker {
+  background: #2a4e6c;
+}
+.darkest {
+  background: #1c3448;
+}
+.hidden {
+  display: none;
+}
+.border {
+  border: 5px #9ab446 solid;
+}
+.rolledUp {
+  border: 8px solid #b44669;
+  background: #ff0;
+}
+body {
+  background: #4682b4;
+  color: #112;
+  font-family: Helvetica, Arial, sans-serif;
+}
+div,
+p {
+  padding: 8px;
+  margin: 8px;
+}
+#dz {
+  padding: 8px;
+  height: 100px;
+  width: 75%;
+}

@@ -1,1 +1,0 @@
-#exTable{color:$darkest -40%;border-collapse:collapse;border-spacing:0;}#exTable td,#exTable th{border:1px solid $mainColour -10%;padding:4px 8px;height:30px}#exTable th{background:$darker;color:$lightest;font-weight:bold;height:40px}#exTable td{text-align:center}#exTable tr td:last-child,#exTable tr th:last-child{background:none;text-align:center;border:0 none}
