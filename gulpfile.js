@@ -30,10 +30,9 @@ function customPlumber(errTitle) {
 gulp.task('stylus', () => {
   gulp.src(srcDir + '/stylus/main.styl')
       .pipe(customPlumber('Stylus Error'))  
-      .pipe(stylus())
+      .pipe(stylus({ compress: true}))
       .pipe(gulp.dest(srcDir))
       .pipe(browserSync.reload({ stream:true }))
-
 })
 
 gulp.task('watch:stylus', () => {
@@ -48,10 +47,8 @@ gulp.task('watch:js', () => {
 
 // simply watch my hand-written js
 gulp.task('js', () => {
-   
-    gulp.src(srcDir +'/js/**/*.js')
-        .pipe(browserSync.reload({ stream: true }))
-  
+  gulp.src(srcDir +'/js/**/*.js')
+      .pipe(browserSync.reload({ stream: true }))
 })
 
 

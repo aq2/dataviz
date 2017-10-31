@@ -1,11 +1,31 @@
 main project:
   ☐ do this
-
-
-dropZone:
-  ✔ rollup dropzone when ok @done (28-10-17 23:35)
+  ☐ architecture
 
 
 now!:
-  ☐ organize fn structure!
-  ☐ git!
+  ✔ organize fn structure! @done (31-10-17 17:16)
+  ☐ rollup extable
+  ☐ getViz
+
+
+getViz:
+  ✔ programatically build div with radio buttons @done (31-10-17 17:17)
+  ✔ radio.clicked calls doViz(vizType) @done (31-10-17 17:17)
+  ☐ use buttons rather than radios
+  ☐ mock it all out so straight to pareto
+
+
+rollup:
+  ☐ css
+  ☐ event handlers - hover, click
+  ✘ rollup(divID)  ? @cancelled (31-10-17 17:17)
+  ☐ Qdiv.roller(x,y,z)
+
+
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+
+Archive:
+ ✔ git! @done (30-10-17 16:31) @project(now!)
+ ✔ rollup dropzone when ok @done (28-10-17 23:35) @project(dropZone)
