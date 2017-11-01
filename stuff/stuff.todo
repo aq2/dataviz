@@ -5,23 +5,26 @@ main project:
 
 now!:
   ✔ organize fn structure! @done (31-10-17 17:16)
-  ☐ rollup extable
-  ☐ getViz
+  ✔ rollup extable @done (01-11-17 23:03)
+    ✘ first mave it a qdiv @cancelled (01-11-17 23:03)
+  ✔ getViz @done (01-11-17 23:03)
+  ✔ transitions @done (01-11-17 23:03)
 
 
 getViz:
   ✔ programatically build div with radio buttons @done (31-10-17 17:17)
   ✔ radio.clicked calls doViz(vizType) @done (31-10-17 17:17)
-  ☐ use buttons rather than radios
+  ✔ use buttons rather than radios @done (01-11-17 23:04)
   ☐ mock it all out so straight to pareto
 
 
 rollup:
-  ☐ css
+  ✔ css @done (01-11-17 23:04)
   ☐ event handlers - hover, click
   ✘ rollup(divID)  ? @cancelled (31-10-17 17:17)
-  ☐ Qdiv.roller(x,y,z)
+  ✘ Qdiv.roller(x,y,z) @cancelled (01-11-17 23:04)
 
+  idea! - don't rollup, just hide the div, show it again with all state?
 
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿

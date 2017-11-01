@@ -10,21 +10,41 @@
 <body>
   <h1>data viz exercise</h1>
 
-<!--   <div id='dz' class='lighter border'>
-    drop data file here 
-    - must be text (eg csv) and less than 10kB
+  <!-- <div class='floater'>1</div>
+  <div class='floater'>2</div> -->
+ <!--  <div class='floater'>3</div>
+  <div class='floater'>4</div> -->
+
+  <div id='dz' class='floater wideDz'>
+    <div id='dzInstructions'>
+      drag and drop data file here 
+    </div>
+    <div id='dzText'>
+      - must be text (eg csv)
+    </div>
+    <div id='dzSize'>
+      - and less than 10kB
+    </div>
   </div>
- -->
-  <div id='exTableDiv' class='border'>
-    <table id='exTable' class='stable'></table>
+
+  <div id='critBox' class='floater trans wideDz'>
+    select some criteria using the table below
   </div>
- 
-  <div id='chooseViz' class='border'>
+
+  <div id='chooseViz' class='floater trans wideDz'>
     Select data vizualisation
+    <button id='pareto'>pareto</button>
+    <button id='parallel'>parallel</button>
     <br>    
   </div>
 
+  <div id='exTableDiv' class='border clearbox'>
+    <table id='exTable' class='stable'></table>
+  </div>
+ 
 
+
+  <script src='js/variables.js'></script>
   <script src='js/get_file.js'></script>
   <script src='js/process_file.js'></script>
 </body>

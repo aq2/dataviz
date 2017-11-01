@@ -9,12 +9,28 @@ body
 	font-family Helvetica, Arial, sans-serif
 	
 
-div, p 
-	padding 8px
-	margin 8px
-
 #dz
 	padding 8px
-	height 100px
-	width 75%
-	// font-size 36pt
+	transition width .5s ease 0.15s, background .5s, border-radius .5s ease .5s
+
+#critBox, #chooseViz
+	// transition opacity 3s
+	padding 8px
+	transition width .5s ease 0.15s, background .5s, border-radius .5s ease .5s, opacity 1s .75s
+		
+	
+#dzText
+	transition background 2s
+
+.trans
+	opacity 0
+
+
+.floater {
+	float left
+	margin-right 20px 
+}
+
+.clearbox
+	clear: left
+

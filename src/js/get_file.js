@@ -1,161 +1,67 @@
 // start point for the app
 
-var dzQ
-
-
 function preload() {   // eslint-disable-line
   select('#exTableDiv')
-    .hide()
-  
-  select('#chooseViz')
     .hide()
 }
 
 
 function setup() {    // eslint-disable-line
   // setup dropzone
-
-  let dzHtml = `<p>drop data file here</p>
-                <p id='dzError'>must be text (eg csv) and less than 10kB</p>`
-
-  // createP(dzHtml)
-  //   .id('dz')
-  //   .drop(gotFile)
-  //   .position(20,80)
-  //   .addClass('border')
-  //   .addClass('lighter')
-  //   .dragOver(highlight)
-  //   .dragLeave(unhighlight)
-
-
-
-  dzQ = new Qdiv('dz', 10, 10, 400, 200, dzHtml)
-
   select('#dz')
-  .drop(gotFile)
-     .position(20,80)
-     .addClass('border')
-     .addClass('lighter')
-     .dragOver(highlight)
-     .dragLeave(unhighlight)
-
-
-    // let bQ = new Qdiv('barQ', 10, 10, 200, 100, 'foo')
-
-    // let bD = select('#barQ')
-    //           .html('<p>bazbaz</p>')
-    // // rollup('#barQ', 10, 10, 100, 100, 'rolledup')
-
-    // bQ.roller(10, 205, 'tits')
-    // let fh = bQ.finalHTML
-    // console.log('fh ' + fh)
-    
-
-    // let bq = select('#barQ')
-    // console.log('bg.fH ' + fh)
-
-
+    .drop(gotFile)
+    .dragOver(highlight)
+    .dragLeave(unhighlight)
 }
 
 
 function highlight(evt) {
-  this.class('lightest').addClass('border')
+  this.style('filter', 'brightness(1.15)')
   evt.preventDefault()
 }
 
 
 function unhighlight(evt) {
-  this.class('lighter').addClass('border')
+  this.style('filter', 'brightness(1.0)')
   evt.preventDefault()
 }
 
 
+function errorMsg(id) {
+  // let iid = '#' + id
+  select('#' + id)
+  .style('background', COL.brown)
+}
+
+
 function gotFile(file) {
-  var errMsg = ''
-  let dz = select('#dz')
-           .class('darker')
-  
-  // check file type and size
-  file.type != 'text' ? errMsg='can only accept text files': false
-  file.size > 10000 ? errMsg='file too big - max 10kB': false
-
   // todo file should have at least three lines, header, cand1, cand2
-
-  // if no error, do some css and move on to process = getMeasurables etc
-  if (errMsg) {
-    dz.html(errMsg)
-    // wobble?
-  } else {
-    // good to go ho
-
-    dzQ.roller(80, 40, '1 - drop')
-    
-
-    // original G
-    // dz.html('1 - Data')
-    //   .size(80,30)
-    //   .class('rolledUp')
-    
-    console.log('orig is ' + dzQ.oHTML)
-    console.log('final was ' + dzQ.fHTML)
-
-
-    // todo disable or change dz event handler
-
-    select('#exTableDiv')
-      .position(20, 180)
-      .show()
-
-    // processFile belongs in process_file.js
-    processFile(file.data)            // eslint-disable-line
+ 
+  if (file.type != 'text') {
+    errorMsg('dzText')
+    return
   }
-}
 
-
-
-// function rollup(divID,x,y,w,h,newHTML) {
-//   var thisDiv = select(divID)
-//   // console.log('rU: thisDiv.html = ' + thisDiv.html())
+  if (file.size > 10000) {
+    errorMsg('dzSize')
+    return
+  }
+ 
+  select('#dz')
+    .html('file OK')
+    .removeClass('wideDz')
+    .addClass('narrowDz')
   
-//   this.finalHTML = thisDiv.html()
-//   // thisDiv.origHTML = thisDiv.html()
-//   console.log('rU: thisDiv.finalHtml = ' + this.finalHTML)
+  // todo disable or change dz event handler
+  
+  select('#critBox')
+    .style('opacity', '1')
 
-//   thisDiv.size(w,h)
-//                 .position(x,y)
-//                 .html(newHTML)
-//                 .class('rolledUp')
+  select('#exTableDiv')
+    .position(20, 180)
+    .show()
 
-//   // this.origHTML = thisDiv.innerHTML
-
-//   return this
-// }
-
-// constructor
-var Qdiv = function (name, ox, oy, ow, oh, oHTML) {
-  this.name = name
-  this.ox = ox
-  this.oy = oy
-  this.ow = ow
-  this.oh = oh
-  this.oHTML = oHTML
-  this.fHTML = ''
-
-  createDiv(oHTML)
-      .id(name)
-      .drop(gotFile)
-      .position(20,180)
-      .addClass('border')
-      .addClass('lighter')
+  // processFile belongs in process_file.js
+  processFile(file.data)            // eslint-disable-line
 }
 
-Qdiv.prototype.roller = function(x, y, ht) {
-  var thisDiv = select('#' + this.name)
-  this.finalHTML = thisDiv.html()
-
-  select('#' + this.name)
-  .size(x,y) 
-  .html(ht)
-
-  return this
-}

@@ -30,18 +30,17 @@ function makeExampleTableHtml(data) {
 
   let c,                    // looper 
       val,                  // looper value
-      myHtml,               // string of html
+      myHtml = "<tr><th>criteria:</th>",   // string of html
       candidates = [],      // array containing two example candidates
       categories = [],      // array of category names
+      exampleData = data.split('\n', 3)
 
   // get first three rows
-  exampleData = data.split('\n', 3)
   categories = exampleData[0].split(',')
   catData.cats = categories
   candidates.push(exampleData[1].split(','), exampleData[2].split(','))
 
   // build up HTML for table
-  myHtml = "<tr><th>criteria:</th>"
   // show each category
   for (c of categories) {
     myHtml += '<th>' + c + '</th>'
@@ -214,64 +213,34 @@ function makeData() {
   }
   console.table(candidates)
 
-
   // rollup table
-  select('#exTable')
-  .hide()
-
   select('#exTableDiv')
-    .position(150, 80)
-    .size(100, 50)
-    .class('darker')
-    .html('2 - Criteria')
-    // .show()
+  .style('opacity', '0')
+
+  select('#critBox')
+    .html('criteria')
+    .removeClass('wideDz')
+    .addClass('narrowDz')
 
   getViz()
 }
 
 
 function getViz() {
-  let vt,
-      vizRadio = createRadio(),
-      vizDiv = select('#chooseViz'),
-      vizTypes = ['pareto', 'parallel'],
-      vizBtn = createButton('ok')
-                 // .parent(vizDiv)
-                 .mousePressed(vizzed)
+  select('#chooseViz')
+    .style('opacity', 1)
 
-  // for each vizType
-  for (vt of vizTypes) {
-    vizRadio.option(vt)
-  }
+  select('#pareto')
+    .mousePressed(pareto)
 
-  // to place button to left of radio
-  vizBtn.parent(vizDiv)
-  vizRadio.parent(vizDiv)
-  
-  vizDiv
-    .position(280, 80)
-    .show()
-
-
-  function vizzed() {
-    let vizType = vizRadio.value()
-    // todo - yuck! - vizType() - could use evil eval, but...
-
-    switch (vizType) {
-      case 'pareto':
-        pareto()
-        break
-      case 'parallel':
-        parallel()
-        break
-      default: {}
-    }
-  }
-
+  select('#parallel')
+    .mousePressed(parallel)
 }
 
 function pareto() {
   console.log('pareto')
+  // select('#exTableDiv')
+  //   .style('opacity', 1)
 }
 
 function parallel() {
